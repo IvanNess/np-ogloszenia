@@ -1,0 +1,47 @@
+.form-panels{
+    max-width: 615px;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+
+.form-panel{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    .title{
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+    .row{
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 20px;
+        .row-input{
+            flex: 1;
+            margin-right: 10px;
+            &:last-child{
+                margin-right: 0;
+            }
+            &.twoFlex{
+                flex: none;
+                width: 380px;
+            }
+            .cols{
+                display: flex;
+            }
+        }
+    }
+    .input-title{
+        font-size: 14px;
+        font-weight: 600;
+        color: #0d0f26;
+        margin: 0px 0px 10px 0px;
+        text-align: left;
+        &.star:after{
+            content: ' *';
+            color: #ed1c24;
+        }
+    }
+}

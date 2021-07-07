@@ -1,0 +1,24 @@
+.myInput{
+    margin-right: 10px;
+    position: relative;
+    input{
+        width: 100%;
+        border: 1px solid #d4d4d4; 
+        &:focus-visible {
+            border: 1px solid #c7d7ec; 
+            outline: #c7d7ec auto 1px;
+        } 
+        &.after{
+            padding-right: 20px;
+        }
+    }   
+    &:last-child{
+        margin-right: 0;
+    }
+    .afterValue{
+        position: absolute;
+        right: 5px;
+        top: 0;
+        color: #aaaaaa;
+    }
+}

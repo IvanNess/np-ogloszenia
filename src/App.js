@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import Main from './components/main';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import ChoiceValue from './components/choiceValue/choiceValue';
+import MySelect from './components/mySelect';
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Provider store={store}>
+        <div>
+          {/* <MySelect choice='sport' choiceValues={[1, 2, 3, 4, 5]} isInner={true} title='Sport'/>
+          <MySelect choice='uroda' choiceValues={[1, 7, 8, 9, 2]} title='Uroda'/>
+          <MySelect choice='kadry' choiceValues={[1, 7, 8, 9, 2]} isSingleValue={true} title='Kadry'/> */}
+          <Main/>
+        </div>
+      </Provider>
     </div>
   );
 }

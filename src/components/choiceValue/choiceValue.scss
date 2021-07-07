@@ -1,0 +1,16 @@
+.choiceValue{
+    display: flex;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: left;
+    &:hover{
+        background-color: #f5f5f5;
+    }
+    &.checked{
+        background-color: #56c5e9;;
+    }
+    &.inner{
+        padding-left: 50px;
+    }
+}

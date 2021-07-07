@@ -1,0 +1,70 @@
+.secondWindow{
+    border: 1px solid #d4d4d4;
+    cursor: pointer;
+    .window-outer{
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        cursor: auto;
+        .window{
+            flex: 1;
+            // margin-left: auto;
+            // margin-right: auto;
+            // margin-top: 60px;
+            background-color: #ffffff;
+            max-width: 900px;
+            opacity: 1;
+            box-shadow: 0 5px 15px #888888;
+            .body{
+                display: flex;
+                height: 70vh;
+                overflow: auto;
+                .col{
+                    flex: 1;
+                }
+            }
+            .top{
+                display: flex;
+                justify-content: space-between;
+                padding: 10px;
+                .right{
+                    cursor: pointer;
+                }
+            }
+            .mySelect{
+                padding: 8px 0;
+            }
+            .choiceValue{
+                padding-top: 8px;
+                padding-bottom: 8px;
+            }
+            .searchDiv{
+                padding: 10px;
+                input{
+                    width: 100%;
+                    border: 1px solid #d4d4d4; 
+                    &:focus-visible {
+                        border: 1px solid #c7d7ec; 
+                        outline: #c7d7ec auto 1px;
+                    }
+                }
+            }
+        }
+    }
+    .window-bg{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0.8;
+        background-color: #d4d4d4;
+        z-index: 1;
+    }
+}
