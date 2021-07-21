@@ -1,0 +1,27 @@
+.ck.ck-reset.ck-editor{
+    width: 100%;
+}
+
+.ck.ck-content{
+    height: 250px;
+}
+
+.myEditor.error{
+    border: 1px solid #ed1c24; 
+    border-radius: 3px;
+    .ck.ck-toolbar.ck-toolbar_grouping{
+        border: none;
+    }
+    .ck-blurred.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline{
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
+    }
+    .ck-focused.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline{
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
+        border-top: 1px solid #c4c4c4; 
+    }
+}
+

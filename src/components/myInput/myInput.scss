@@ -1,15 +1,19 @@
 .myInput{
     margin-right: 10px;
     position: relative;
-    input{
+    input, textarea{
         width: 100%;
         border: 1px solid #d4d4d4; 
+        border-radius: 3px;
         &:focus-visible {
             border: 1px solid #c7d7ec; 
             outline: #c7d7ec auto 1px;
         } 
         &.after{
             padding-right: 20px;
+        }
+        &.error{
+            border: 1px solid #ed1c24; 
         }
     }   
     &:last-child{

@@ -1,0 +1,89 @@
+.ogloszenie{
+    display: flex;
+    width: 100%;
+    border: 1px solid #d4d4dc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    min-height: 252px;
+    .left{
+        border-right: 1px solid #d4d4dc;
+        display: flex;
+        align-items: center;
+        min-width: 376px;
+        justify-content: center;
+        align-items: center;
+        .img-wrapper{
+            width: 100%;
+            img{
+                max-width: 276px;
+                padding: 15%;
+            }
+        }
+    }
+    .right{
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        .top{
+            display: flex;
+            justify-content: space-between;
+            .right-top-left{
+                padding: 20px;
+                text-align: left;
+                .miastoAnd{
+                    display: flex;
+                    font-size: 12px;
+                    font-weight: 700;
+                    white-space: nowrap;
+                    .miasto{
+                        color: #a3a3b6;
+                        padding-right: 10px;
+                    }
+                    .season{
+                        color: #ea7225;
+                    }
+                }
+                .titleValue{
+                    display: flex;
+                    .title{
+                        width: 120px;
+                        color: #a3a3b6;
+                        font-size: 14px;
+                    }
+                    .value{
+                        font-size: 14px;
+                        flex: 1;
+                    }
+                }
+            }
+            .right-top-right{
+                width: 175px;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                .nazwa a{
+                    padding-right: 20px !important;
+                    color: #ea7225 !important;
+                    font-size: 14px  !important;
+                    font-weight: bold !important;
+                    &:hover{
+                        text-decoration: underline !important;
+                    }
+                }
+            }
+        }
+        .bottom{
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin: 0 20px;
+            border-top: 1px solid #d4d4dc;
+            font-size: 12px;
+            text-align: left;
+            color: #a3a3b6;
+        }
+    }
+}

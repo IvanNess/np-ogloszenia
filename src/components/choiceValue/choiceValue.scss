@@ -13,4 +13,12 @@
     &.inner{
         padding-left: 50px;
     }
+    &.error{
+        background-color: #ed1c24;
+        color: white;
+        border-radius: 3px;
+    }
+    p{
+        margin-bottom: 0;
+    }
 }

@@ -1,0 +1,22 @@
+
+.ant-upload-picture-card-wrapper.avatar-uploader{
+    text-align: left;
+}
+
+.ant-upload.ant-upload-select.ant-upload-select-picture-card{
+    background-color: #004b90;
+    cursor: pointer;
+    &:hover{
+        background-color: #2f6eb6;
+    }
+}
+
+.with-image{
+    .ant-upload.ant-upload-select.ant-upload-select-picture-card{
+        background-color: #eeeeee;
+        cursor: pointer;
+        &:hover{
+            background-color: #d4d4d4;
+        }
+    }
+}

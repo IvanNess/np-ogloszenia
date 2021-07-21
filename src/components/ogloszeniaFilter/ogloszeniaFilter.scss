@@ -1,0 +1,114 @@
+.ogloszeniaFilter{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 20px;
+    border: none;
+    .row{
+        display: flex;
+        flex-direction: row;
+        background-color: #2f6eb6;
+        padding: 12px 10px 12px 10px;
+        .row-input{
+            flex: 1;
+            padding-right: 10px;
+            &:last-child{
+                padding-right: 0;
+            }
+            .input-title{
+                color: white;
+                // padding-top: 10px;
+            }
+            &.twoFlex{
+                flex: 2;
+            }
+            &.threeFlex{
+                flex: 3;
+            }
+            input[type=submit], input[type=button]{
+                width: 100%;
+                background-color: #ea7225;
+                color: white;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                border-radius: 3px;
+                font-size: 14px;
+                font-weight: 700;
+                text-transform: uppercase;
+                &:hover{
+                    background-color: #fb853a;
+                }
+            }
+            input{
+                min-height: 2rem;
+            }
+            &.more{
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-end;
+                padding-top: 25px;
+                min-height: 2rem;
+                font-size: 14px;
+                font-weight: 700;
+                cursor: pointer;
+            }
+        }
+    }
+    .mySelect .header, .secondWindow{
+        min-height: 2rem;
+        display: flex;
+    }
+    .moreDiv{
+        box-shadow: rgba(48, 48, 48, 0.41) 0 0 2px;
+        // border-bottom-left-radius: 5px;
+        // border-bottom-right-radius: 5px;
+        overflow: hidden;
+        transition-duration: 0.4s;
+        background-color: white;
+        .top, .bottom{
+            background-color: white;
+            flex: 4;
+            padding-bottom: 30px;
+        }
+        .input-title{
+            color: #0d0f26 !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            padding-top: 10px;
+            &.right{
+                padding-left: 15px;
+            }
+        }
+        &.open{
+            max-height: 450px;
+        }
+        &.closed{
+            max-height: 0;
+        }
+        .bottom{
+            .clearFilters p{
+                font-size: 12px;
+                font-weight: 600;
+                color: #ea7225;
+                cursor: pointer;
+                max-width: 80px;
+            }
+            &.row{
+                padding: 10px 0;
+                margin-left: 12px;
+                margin-right: 12px;
+                background-color: white;
+                border-top: 1px solid #d4d4dc;
+            }
+        }
+    }
+    .row-input.left{
+        // border-left: 1px solid #d4d4dc;
+        .choiceValue{
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    }
+    
+}

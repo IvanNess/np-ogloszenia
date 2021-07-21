@@ -3,6 +3,7 @@ import './mySelect.scss'
 import ChoiceValue from '../choiceValue/choiceValue'
 import MultSelectHeader from '../multSelectHeader';
 import { useSelector } from 'react-redux';
+import MyError from '../myError';
 
 // Hook
 function useOnClickOutside(ref, handler) {
@@ -38,11 +39,16 @@ function useOnClickOutside(ref, handler) {
     );
 }
 
-const MySelect = ({choice, choiceValues, isInner=false, isSingleValue=false, title, max, search}) => {
+const MySelect = ({
+  choice, choiceValues, isInner=false, isSingleValue=false, title, max, search, initSingleChoice
+}) => {
 
     const [isOpen, setIsOpen] = useState(false)
     const ref = useRef()
     const values = useSelector(state=>state.choices[choice] || [])
+    const language = useSelector(state=>state.language)
+    const errors = useSelector(state=>state.errors)
+    const [isError, setIsError] = useState(false)
 
     const click =()=>{
         if(isInner && values.length > 0)
@@ -63,17 +69,25 @@ const MySelect = ({choice, choiceValues, isInner=false, isSingleValue=false, tit
 
     useEffect(()=>{
       // console.log('mySelect useEffect', isOpen, values)
-      if(values.length !== 0){
+      if(values.length !== 0 && !initSingleChoice){
           console.log('open')
           setIsOpen(true)
       }
     }, [])
 
+    useEffect(()=>{
+      if(errors.includes(choice)){
+          setIsError(true)
+      } else{
+          setIsError(false)
+      }
+    }, [errors])
+
     const isSearchedHere = ()=>{
       if(!search)
         return true
       const searched = choiceValues.find(value=>{
-        return value.toLowerCase().includes(search.toLowerCase().trim())
+        return value[language].toLowerCase().includes(search.toLowerCase().trim())
       })
       if(searched){
         return true
@@ -83,15 +97,24 @@ const MySelect = ({choice, choiceValues, isInner=false, isSingleValue=false, tit
 
     return (
       <>
-        {isSearchedHere() && <div className={`mySelect`} ref={isInner ? null : ref }>
-            <div className={`header ${isOpen && 'open'} ${(isInner && values.length > 0) && 'not-closeable'} ${isInner && 'inner'}`} onClick={click}>
-                <MultSelectHeader choice={choice} isOpen={isOpen} isInner={isInner} isSingleValue={isSingleValue} title={title}/>
+        {isSearchedHere() && <div className={`mySelect ${isError && 'error'} ${choice}`} ref={isInner ? null : ref }>
+            <div 
+              className={`
+                header ${isOpen && 'open'} ${(isInner && values.length > 0) && 'not-closeable'} 
+                ${isInner && 'inner'} ${isError && 'error'}
+              `} 
+              onClick={click}
+            >
+                <MultSelectHeader choice={choice} isOpen={isOpen} choiceValues={choiceValues}
+                  isInner={isInner} isSingleValue={isSingleValue} title={title} initSingleChoice={initSingleChoice}
+                />
             </div>
-            <div className={`choices ${isOpen? 'open': 'closed'} ${isInner && 'inner'}`}>
+            <div className={`choices ${isOpen? 'open': 'closed'} ${isInner && 'inner'} ${choiceValues.length>11 && 'overflow'}`}>
                 {choiceValues.map(choiceValue=> (
-                    <ChoiceValue choice={choice} value={choiceValue} key={choiceValue} isInner={isInner} isSingleValue={isSingleValue} max={max} search={search}/>
+                    <ChoiceValue choice={choice} value={choiceValue} key={choiceValue.key} isInner={isInner} isSingleValue={isSingleValue} max={max} search={search}/>
                 ))}
             </div>
+            <MyError choice={choice}/>
         </div>}
       </>
     )

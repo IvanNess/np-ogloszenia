@@ -1,13 +1,15 @@
 .form-panels{
     max-width: 615px;
     margin: 0 auto;
-    background-color: #ffffff;
+    padding: 40px 0;
 }
 
 .form-panel{
     display: flex;
     flex-direction: column;
     padding: 20px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
     .title{
         font-size: 18px;
         font-weight: 700;
@@ -45,3 +47,85 @@
         }
     }
 }
+
+.row-input.alone-input{
+    margin-bottom: 20px;
+}
+
+.alone-input .choiceValue.inner{
+    padding-left: 0;
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
+
+.row .row-input .wrapper{
+    padding: 20px;
+    border: 1px solid #d4d4d4; 
+}
+
+.firmOrPrivate{
+    .mySelect{
+        .header, .choices{
+            max-width: 50%;
+        }
+        .choices{
+            top: 25px;
+            &.open{
+                max-height: 240px;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+.period{
+    .mySelect{
+        .header, .choices{
+            max-width: 50%;
+        }
+    }
+} 
+
+.row-input.login-btn, .row-input.add-btn-row{
+    display: flex;
+    align-self: flex-end;
+    button{
+        padding: 8px 20px;
+        background-color: #004b90;
+        font-size: 14px;
+        font-weight: bolder;
+        color: #ffffff;
+        text-transform: uppercase;
+        outline: none;
+        border: 1px solid white; 
+        cursor: pointer;
+        transition-duration: 0.4s;
+        // border-radius: 3px;
+        &:hover{
+            background-color: #2f6eb6 ;
+        }
+    }
+}
+
+.row-input.add-btn-row{
+    justify-content: space-between;
+    align-items: center;
+    button{
+        height: 3.6em;
+        line-height: 3.6;
+        padding: 0px 30px 0px 30px;
+        background-color: #ea7225;
+        &:hover{
+            background-color: #fb853a;
+        }
+        &[disabled]{
+            display: none;
+        }
+    }
+}
+
+.req{
+    color: #ed1c24;
+}
+

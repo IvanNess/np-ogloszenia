@@ -8,14 +8,20 @@ import { removeChoice, removeAllValues } from '../../redux/actions';
 import LeftHeader from './leftHeader';
 import InnerLeftHeader from './innerLeftHeader';
 
-const MultSelectHeader = ({choice, isOpen, isInner, isSingleValue, title}) => {
+const MultSelectHeader = ({choice, isOpen, isInner, isSingleValue, title, choiceValues, initSingleChoice}) => {
 
     const values = useSelector(state=>state.choices[choice] || (isSingleValue ? false : []))
     const dispatch = useDispatch()
+    // const choices = useSelector(state=>state.choices)
+    const language = useSelector(state=>state.language)
+
+    // useEffect(()=>{
+    //     dispatch(singleChoice({choice, value: initSingleChoice}))
+    // }, [])
 
     const closeClick=(e, value)=>{
         e.stopPropagation()
-        console.log('close')
+        console.log('close value', value)
         dispatch(removeChoice({choice, value}))
     }
 
@@ -27,18 +33,29 @@ const MultSelectHeader = ({choice, isOpen, isInner, isSingleValue, title}) => {
         }
     }
 
+    const singleValueTitle = (selectedValue)=>{
+        const value =  choiceValues
+            .find(choiceValue=>{
+                return choiceValue.key===selectedValue
+            })
+        if(!value)
+            return ''
+        return value[language]
+    }
+
     return (
-        <div className='multSelectHeader'>
+        <div className={`multSelectHeader`}>
             <div className={`left`}>
                 {
-                    isSingleValue ? (values ? values : title) :
-                    isInner ? <InnerLeftHeader values={values} choice={choice} closeClick={closeClick} isOpen={isOpen} title={title}/>
-                    : <LeftHeader values={values} choice={choice} closeClick={closeClick} title={title}/>
+                    isSingleValue ? (values ? singleValueTitle(values) : title) :
+                    isInner 
+                        ? <InnerLeftHeader values={values} choice={choice} closeClick={closeClick} isOpen={isOpen} title={title}/>
+                        : <LeftHeader values={values} choice={choice} closeClick={closeClick} title={title} choiceValues={choiceValues}/>
                 }
                 
             </div>
             <div className={`right ${isInner && 'inner'}`} onClick={cancelClick}>
-                {values.length > 0 && <CancelIcon style={{fontSize: '15px'}}/>}
+                {values.length > 0 && !isSingleValue && <CancelIcon style={{fontSize: '15px'}}/>}
                 {!isOpen && (values.length === 0 || isSingleValue) &&<KeyboardArrowDownIcon/>}
                 {isOpen && (values.length === 0 || isSingleValue) && <KeyboardArrowUpIcon/>}
             </div>
